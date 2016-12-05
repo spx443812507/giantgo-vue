@@ -4,32 +4,42 @@
   </div>
 </template>
 <script>
+  require('../../assets/css/sprite.css')
+
   export default {
     name: 'App',
     components: {}
   }
 </script>
 <style lang="scss">
-  @import "../../assets/sass/util";
   @import "../../assets/sass/var";
+  @import "../../assets/sass/util";
 
   .container {
     width: 100%;
     height: 100%;
     @include px2rem(max-width, 750px);
+    box-sizing: border-box;
     background: url(../../assets/images/background.png) no-repeat;
     margin: 0 auto;
     background-size: cover;
     position: relative;
+    overflow: hidden;
   }
 
   .bar {
+    position: absolute;
+    right: 0;
+    left: 0;
+    @include px2rem(max-width, 750px);
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
     display: -moz-flex;
     display: -ms-flexbox;
     display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -37,11 +47,6 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    position: absolute;
-    right: 0;
-    left: 0;
-    z-index: 100;
-    @include px2rem(max-width, 750px);
   }
 
   .content {
@@ -53,37 +58,28 @@
     overflow: auto;
     width: auto;
     height: auto;
+    @include px2rem(padding, 30px);
     display: flex;
     display: -webkit-flex;
     flex-flow: column nowrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     -webkit-overflow-scrolling: touch;
-  }
-
-  .content-center {
-    display: flex;
-    display: -webkit-flex;
-    flex-flow: column nowrap;
-    flex: 1;
-    @include px2rem(padding, 40px);
+    @include font-dpr(16px);
   }
 
   .form-group {
-    display: flex;
-    display: -webkit-flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-flow: row nowrap;
+    @include px2rem(margin-bottom, 20px);
     border-bottom: solid 1px #645d5a;
   }
 
   .form-control {
-    padding: pxToRem(20px) pxToRem(40px);
+    width: 90%;
     @include px2rem(height, 100px);
+    @include px2rem(line-height, 100px);
+    float: right;
     @include font-dpr(16px);
     border-radius: 0;
     color: inherit;
-    width: 80%;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     -webkit-appearance: none;
     outline: none;
@@ -92,73 +88,61 @@
     }
   }
 
-  .content-header {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: space-between;
-    overflow: hidden;
-    position: relative;
-    @include px2rem(height, 540px);
-  }
-
-  .content-footer {
-    @include px2rem(max-width, 750px);
-    display: flex;
-    display: -webkit-flex;
-    flex-direction: column;
-    justify-content: space-around;
-    -webkit-justify-content: space-around;
-    align-items: center;
-    @include px2rem(height, 216px);
-    @include px2rem(padding, 20px);
-    @include font-dpr(12px);
+  .control-icon {
+    @include px2rem(margin-top, 20px);
   }
 
   .bar-header {
     top: 0;
     border-top-width: 0;
     border-bottom-width: 1px;
-    padding: pxToRem(52px) pxToRem(30px) pxToRem(24px) pxToRem(30px);
-    display: flex;
-    justify-content: space-between;
-    background: #494851 top;
-  }
-
-  .bar-header-item {
-    vertical-align: middle;
-  }
-
-  .content-header-item {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    @include px2rem(min-height, 190px);
-    padding: pxToRem(62px) pxToRem(30px) 0 pxToRem(30px);
-    z-index: 2;
   }
 
   .bar-footer {
     bottom: 0;
     border-top-width: 1px;
     border-bottom-width: 0;
-    background: #494851 top;
+    & > span {
+      padding: pxToRem(25px) 0;
+    }
   }
 
-  .bar-footer-item {
+  .bar-header-tools {
+    width: 100%;
+    @include px2rem(min-height, 120px);
+    @include px2rem(padding, 34px);
+    display: flex;
+    flex-flow: row nowrap;
+    vertical-align: middle;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .bar-footer-tools {
+    width: 100%;
+    @include px2rem(height, 120px);
+    margin: 0 pxToRem(25px);
+    padding: 0 pxToRem(15px);
     flex: 1;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
     text-align: center;
     vertical-align: middle;
-    @include px2rem(height, 120px);
-    @include px2rem(line-height, 120px);
-  }
-
-  .has-header {
-    @include px2rem(top, 135px);
-  }
-
-  .has-footer {
-    @include px2rem(bottom, 120px);
+    & > span {
+      @include px2rem(height, 100px);
+      @include px2rem(width, 100px);
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .active {
+      background-color: #8c88ff;
+      border-radius: 50%;
+    }
   }
 
   .correct {
@@ -169,7 +153,6 @@
     @include px2rem(height, 200px);
     border-radius: 50%;
     background-color: #ffffff;
-    z-index: 2;
     .correct-logo {
       @include px2rem(width, 145px);
       @include px2rem(height, 112px);
@@ -178,7 +161,6 @@
 
   .tab {
     display: flex;
-    z-index: 2;
     width: 100%;
     @include font-dpr(16px);
     @include px2rem(padding-top, 40px);
@@ -192,32 +174,63 @@
       @include px2rem(line-height, 80px);
       outline: none;
       &.active {
-        border-bottom: solid pxToRem(10px) rebeccapurple;
+        border-bottom: solid pxToRem(10px) #8c88ff;
       }
     }
   }
 
-  .mask {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 1;
-  }
-
-  .opacity {
-    opacity: 0.1;
-    filter: alpha(opacity=10);
-    background-color: #ffffff;
+  .image-list {
+    width: 100%;
+    height: 100%;
+    @include px2rem(min-height, 300px);
+    @include px2rem(margin-bottom, 20px);
+    display: flex;
+    flex: 1;
+    img {
+      width: 50%;
+    }
+    .description {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    & > * {
+      flex: 1;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .btn-submit {
     width: 100%;
-    background-color: rebeccapurple;
+    background-color: #8c88ff;
     @include px2rem(height, 100px);
+    @include px2rem(line-height, 100px);
     @include font-dpr(16px);
     outline: none;
+    text-align: center;
+  }
+
+  .has-header {
+    @include px2rem(top, 120px);
+  }
+
+  .has-logo {
+    @include px2rem(top, 450px);
+  }
+
+  .has-footer {
+    @include px2rem(bottom, 150px);
+  }
+
+  .has-submit {
+    @include px2rem(bottom, 200px);
+  }
+
+  .mask {
+    background: $background-mask;
   }
 </style>
 
