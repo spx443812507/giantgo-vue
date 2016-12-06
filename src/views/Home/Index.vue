@@ -2,28 +2,58 @@
   <div>
     <div class="bar bar-header mask">
       <div class="bar-header-tools">
-      </div>
-      <div class="correct">
-        <img class="correct-logo" src="static/images/correct.png"/>
-      </div>
-      <div class="tab">
-        <a href="SignIn.html" class="active">登录</a>
-        <a href="SignUp.html">注册</a>
+        <span><i class="icon icon-menu">&nbsp;</i></span>
+        <i class="icon icon-search">&nbsp;</i>
       </div>
     </div>
-    <div class="content has-logo has-submit">
-      <div class="form-group">
-        <i class="icon icon-profile control-icon"></i>
-        <input type="text" class="form-control" placeholder="姓名"/>
-      </div>
-      <div class="form-group">
-        <i class="icon icon-password control-icon"></i>
-        <input type="password" class="form-control" placeholder="密码"/>
+    <div class="content has-header has-footer">
+      <div class="content-center">
+        <div class="image-list">
+          <div class="description mask">
+            Adventure
+          </div>
+          <img alt="" src="static/images/image-01.png"/>
+        </div>
+        <div class="image-list">
+          <img alt="" src="static/images/image-02.png"/>
+          <div class="description mask">
+            Adventure
+          </div>
+        </div>
+        <div class="image-list">
+          <div class="description mask">
+            Adventure
+          </div>
+          <img alt="" src="static/images/image-03.png"/>
+        </div>
+        <div class="image-list">
+          <div class="description mask">
+            Adventure
+          </div>
+          <img alt="" src="static/images/image-01.png"/>
+        </div>
+        <div class="image-list">
+          <img alt="" src="static/images/image-02.png"/>
+          <div class="description mask">
+            Adventure
+          </div>
+        </div>
+        <div class="image-list">
+          <div class="description mask">
+            Adventure
+          </div>
+          <img alt="" src="static/images/image-03.png"/>
+        </div>
       </div>
     </div>
-    <div class="bar bar-footer">
-      <a href="List.html" class="btn-submit">提 交</a>
-      <span><a>忘记密码？</a></span>
+    <div class="bar bar-footer mask">
+      <div class="bar-footer-tools">
+        <span class=""><i class="icon icon-calendar"></i>日历</span>
+        <span class=""><i class="icon icon-overview"></i>总览</span>
+        <span class="active"><i class="icon icon-add"></i>添加</span>
+        <span class=""><i class="icon icon-lists"></i>分类</span>
+        <span class=""><i class="icon icon-timeline"></i>分类</span>
+      </div>
     </div>
   </div>
 </template>

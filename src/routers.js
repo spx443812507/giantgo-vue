@@ -15,6 +15,14 @@ const routers = [{
     })
   }
 }, {
+  path: '/signup',
+  name: 'signup',
+  component (resolve) {
+    require.ensure(['./views/Login/SignUp.vue'], () => {
+      resolve(require('./views/Login/SignUp.vue'))
+    })
+  }
+}, {
   path: '/',
   name: 'index',
   component (resolve) {

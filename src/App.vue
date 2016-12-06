@@ -11,6 +11,7 @@
       CoreLayout
     }
   }
+
 </script>
 
 <style lang="scss">

@@ -6,20 +6,11 @@
       <div class="correct">
         <img class="correct-logo" src="static/images/correct.png"/>
       </div>
-      <div class="tab">
-        <a href="SignIn.html" class="active">登录</a>
-        <a href="SignUp.html">注册</a>
-      </div>
+      <login-tab></login-tab>
     </div>
     <div class="content has-logo has-submit">
-      <div class="form-group">
-        <i class="icon control-icon icon-profile">&nbsp;</i>
-        <input type="text" class="form-control" placeholder="姓名"/>
-      </div>
-      <div class="form-group">
-        <i class="icon control-icon icon-password">&nbsp;</i>
-        <input type="password" class="form-control" placeholder="密码"/>
-      </div>
+      <form-input icon="icon-email" placeholder="邮箱aa"></form-input>
+      <form-input icon="icon-password" placeholder="密码"></form-input>
     </div>
     <div class="bar bar-footer">
       <a href="List.html" class="btn-submit">提 交</a>
@@ -30,12 +21,20 @@
 <style>
 </style>
 <script>
+  import loginTab from '../../components/LoginTab'
+  import formInput from '../../components/formInput'
+
   export default{
     data () {
       return {
-        msg: 'hello vue'
+        msg: 'hello vue',
+        test: 'asd'
       }
     },
-    components: {}
+    components: {
+      loginTab,
+      formInput
+    }
   }
+
 </script>

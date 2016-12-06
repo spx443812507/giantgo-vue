@@ -10,6 +10,7 @@
     name: 'App',
     components: {}
   }
+
 </script>
 <style lang="scss">
   @import "../../assets/sass/var";
@@ -139,7 +140,7 @@
       justify-content: center;
       align-items: center;
     }
-    .active {
+    .router-link-active {
       background-color: #8c88ff;
       border-radius: 50%;
     }
@@ -173,7 +174,7 @@
       @include px2rem(height, 80px);
       @include px2rem(line-height, 80px);
       outline: none;
-      &.active {
+      &.router-link-active {
         border-bottom: solid pxToRem(10px) #8c88ff;
       }
     }
