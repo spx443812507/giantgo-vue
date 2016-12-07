@@ -4,7 +4,7 @@
       <div class="bar-header-tools">
       </div>
       <div class="correct">
-        <img class="correct-logo" src="static/images/correct.png"/>
+        <img class="correct-logo" src="/static/images/correct.png"/>
       </div>
       <login-tab></login-tab>
     </div>

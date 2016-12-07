@@ -7,7 +7,7 @@ const Index = resolve => {
 }
 
 const routers = [{
-  path: '/signin',
+  path: '/passport/signin',
   name: 'signin',
   component (resolve) {
     require.ensure(['./views/Login/SignIn.vue'], () => {
@@ -15,7 +15,7 @@ const routers = [{
     })
   }
 }, {
-  path: '/signup',
+  path: '/passport/signup',
   name: 'signup',
   component (resolve) {
     require.ensure(['./views/Login/SignUp.vue'], () => {

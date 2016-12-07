@@ -4,12 +4,12 @@
       <div class="bar-header-tools">
       </div>
       <div class="correct">
-        <img class="correct-logo" src="static/images/correct.png"/>
+        <img class="correct-logo" src="/static/images/correct.png"/>
       </div>
       <login-tab></login-tab>
     </div>
     <div class="content has-logo has-submit">
-      <form-input icon="icon-email" placeholder="邮箱aa"></form-input>
+      <form-input icon="icon-email" placeholder="邮箱"></form-input>
       <form-input icon="icon-password" placeholder="密码"></form-input>
     </div>
     <div class="bar bar-footer">
