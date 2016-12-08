@@ -9,10 +9,13 @@
       <login-tab></login-tab>
     </div>
     <div class="content has-logo has-submit">
-      <form-input icon="icon-profile" placeholder="姓名"></form-input>
-      <form-input icon="icon-email" placeholder="邮箱"></form-input>
-      <form-input icon="icon-password" placeholder="密码"></form-input>
-      <form-input icon="icon-birthday" placeholder="生日"></form-input>
+      <cell icon="profile" value="aaa"></cell>
+      <mt-cell
+        title="标题文字"
+        to="//github.com"
+        is-link
+        value="带链接">
+      </mt-cell>
     </div>
     <div class="bar bar-footer">
       <a href="List.html" class="btn-submit">提 交</a>
@@ -24,7 +27,7 @@
 </style>
 <script>
   import loginTab from '../../components/LoginTab'
-  import formInput from '../../components/formInput'
+  import cell from '../../components/go-cell'
 
   export default{
     data () {
@@ -32,12 +35,20 @@
         name: 'sss',
         email: '',
         password: '',
-        birthday: ''
+        birthday: '',
+        value: true
+      }
+    },
+    mounted () {
+
+    },
+    methods: {
+      handleClick () {
       }
     },
     components: {
       loginTab,
-      formInput
+      cell
     }
   }
 
