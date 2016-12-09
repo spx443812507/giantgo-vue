@@ -9,8 +9,8 @@
       <login-tab></login-tab>
     </div>
     <div class="content has-logo has-submit">
-      <form-input icon="icon-email" placeholder="邮箱"></form-input>
-      <form-input icon="icon-password" placeholder="密码"></form-input>
+      <go-input icon="email" label="邮箱" placeholder="请输入邮箱"></go-input>
+      <go-input icon="password" label="密码" placeholder="请输入密码"></go-input>
     </div>
     <div class="bar bar-footer">
       <a href="List.html" class="btn-submit">提 交</a>
@@ -22,7 +22,7 @@
 </style>
 <script>
   import loginTab from '../../components/LoginTab'
-  import formInput from '../../components/formInput'
+  import goInput from '../../components/go-input.vue'
 
   export default{
     data () {
@@ -33,7 +33,7 @@
     },
     components: {
       loginTab,
-      formInput
+      goInput
     }
   }
 
