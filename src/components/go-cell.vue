@@ -53,11 +53,6 @@
   }
 
   .go-cell-wrapper {
-    background-image: linear-gradient(180deg, $color-grey, $color-grey 50%, transparent 50%);
-    background-size: 120% 1px;
-    background-repeat: no-repeat;
-    background-position: top left;
-    background-origin: content-box;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
