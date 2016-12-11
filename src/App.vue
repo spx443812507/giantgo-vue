@@ -14,7 +14,7 @@
 
 </script>
 
-<style lang="scss">
+<style lang="sass" rel="stylesheet/scss">
   @import "assets/sass/util";
 
   html {

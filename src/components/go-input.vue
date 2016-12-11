@@ -11,7 +11,7 @@
       @input="handleInput">
   </cell>
 </template>
-<style lang="scss">
+<style lang="sass" rel="stylesheet/scss">
   @import "../assets/sass/var";
   @import "../assets/sass/util";
 
