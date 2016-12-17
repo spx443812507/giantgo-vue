@@ -31,13 +31,19 @@
   @import "../assets/sass/util";
 
   .go-cell {
-    padding: pxToRem(16px) 0;
+    @include font-dpr(16px);
+    @include px2rem('min-height', 120px);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     display: -webkit-flex;
     color: inherit;
-    @include font-dpr(16px);
+    text-decoration: none;
+    &:first-child {
+      .go-cell-wrapper {
+        background-image: none;
+      }
+    }
     .cell-border {
       border-bottom: solid 1px $border-color;
     }
@@ -53,12 +59,13 @@
   }
 
   .go-cell-wrapper {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
+    background-image: linear-gradient(180deg, $color-grey, $color-grey 50%, transparent 50%);
+    background-size: 120% pxToRem(5px);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-origin: content-box;
     align-items: center;
     box-sizing: border-box;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     @include font-dpr(16px);
     line-height: 1;

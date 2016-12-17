@@ -15,7 +15,7 @@
       <go-input icon="birthday" label="生日" placeholder="请选择生日"></go-input>
     </div>
     <div class="bar bar-footer">
-      <a href="List.html" class="btn-submit">提 交</a>
+      <router-link to="/home" class="btn-submit">注册</router-link>
       <span><a>忘记密码？</a></span>
     </div>
   </div>

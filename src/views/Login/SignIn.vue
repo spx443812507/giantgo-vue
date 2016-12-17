@@ -13,7 +13,7 @@
       <go-input icon="password" label="密码" placeholder="请输入密码"></go-input>
     </div>
     <div class="bar bar-footer">
-      <a href="List.html" class="btn-submit">提 交</a>
+      <router-link to="/home" class="btn-submit">登录</router-link>
       <span><a>忘记密码？</a></span>
     </div>
   </div>
