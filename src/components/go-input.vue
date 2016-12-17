@@ -11,7 +11,7 @@
       @input="handleInput">
   </cell>
 </template>
-<style lang="sass" rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss">
   @import "../assets/sass/var";
   @import "../assets/sass/util";
 
@@ -41,7 +41,7 @@
     @extend %go-field;
   }
 
-  .go-cell-core {
+  .go-field-core {
     @include px2rem(height, 100px);
     @include px2rem(line-height, 100px);
     @include font-dpr(16px);

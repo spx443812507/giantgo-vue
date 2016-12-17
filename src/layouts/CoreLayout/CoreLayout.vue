@@ -12,7 +12,7 @@
   }
 
 </script>
-<style lang="sass" rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss">
   @import "../../assets/sass/var";
   @import "../../assets/sass/util";
 
