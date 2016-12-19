@@ -12,8 +12,8 @@
   </cell>
 </template>
 <style lang="scss" rel="stylesheet/scss">
-  @import "../assets/sass/var";
-  @import "../assets/sass/util";
+  @import "../../assets/sass/var";
+  @import "../../assets/sass/util";
 
   %go-field {
     display: -webkit-box;
@@ -39,9 +39,24 @@
 
   .go-field-hasLabel {
     @extend %go-field;
+    .go-cell-value {
+      flex: 1;
+      color: inherit;
+      display: flex;
+    }
+    .go-cell-title {
+      @include px2rem(width, 200px);
+      -webkit-box-flex: 0;
+      -ms-flex: none;
+      flex: none;
+    }
+    .go-cell-info {
+      @include px2rem(width, 150px);
+    }
   }
 
   .go-field-core {
+    width: 100%;
     @include px2rem(height, 100px);
     @include px2rem(line-height, 100px);
     @include font-dpr(16px);
@@ -56,9 +71,10 @@
   }
 </style>
 <script>
-  import cell from './go-cell.vue'
+  import cell from '../cell/go-cell.vue'
 
   export default{
+    name: 'go-input',
     data () {
       return {}
     },

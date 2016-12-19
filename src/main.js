@@ -3,15 +3,9 @@ import VueRouter from 'vue-router'
 import routes from './routers'
 import store from './store'
 import App from './App'
-import { Cell, Checklist, Button, Toast, Switch, Field } from 'mint-ui'
+import go from './package'
 
-Vue.component(Switch.name, Switch)
-Vue.component(Cell.name, Cell)
-Vue.component(Checklist.name, Checklist)
-Vue.component(Button.name, Button)
-Vue.component(Toast.name, Toast)
-Vue.component(Field.name, Field)
-
+Vue.use(go)
 Vue.use(VueRouter)
 
 /* eslint-disable no-new */

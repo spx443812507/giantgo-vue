@@ -24,8 +24,6 @@
 </style>
 <script>
   import loginTab from '../../components/LoginTab'
-  import goInput from '../../components/go-input'
-  import cell from '../../components/go-cell'
 
   export default{
     data () {
@@ -45,9 +43,7 @@
       }
     },
     components: {
-      loginTab,
-      goInput,
-      cell
+      loginTab
     }
   }
 

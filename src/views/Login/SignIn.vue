@@ -22,7 +22,6 @@
 </style>
 <script>
   import loginTab from '../../components/LoginTab'
-  import goInput from '../../components/go-input.vue'
 
   export default{
     data () {
@@ -32,8 +31,7 @@
       }
     },
     components: {
-      loginTab,
-      goInput
+      loginTab
     }
   }
 

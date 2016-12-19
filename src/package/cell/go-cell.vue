@@ -27,8 +27,8 @@
   </div>
 </template>
 <style lang="scss" rel="stylesheet/scss">
-  @import "../assets/sass/var";
-  @import "../assets/sass/util";
+  @import "../../assets/sass/var";
+  @import "../../assets/sass/util";
 
   .go-cell {
     @include font-dpr(16px);
@@ -82,12 +82,15 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    justify-content: center;
+    align-items: center;
+
   }
 
   .go-cell-info {
     @include px2rem(margin-left, 5px);
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
   }
 
