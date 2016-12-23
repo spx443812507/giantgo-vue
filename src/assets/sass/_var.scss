@@ -1,4 +1,8 @@
 @charset "utf-8";
+@import "util";
+
+$background-image: '../../assets/images/background.png';
+
 $color-blue: #26a2ff;
 $color-white: #fff;
 $color-grey: #696969;
@@ -37,6 +41,7 @@ $tabbar-tab-item-selected-background-color: #eaeaea;
 
 /* Checklist Component */
 $checklist-title-color: #888;
+$checklist-size: pxToRem(50px);
 
 /* Radio Component */
 $radio-title-color: #888;

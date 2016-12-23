@@ -11,7 +11,7 @@
         <slot name="title">
           <div class="go-cell-info">
             <span class="go-cell-text" v-text="title"></span>
-            <span v-if="label" class="go-cell-label" v-text="label"></span>
+            <span class="go-cell-label" v-if="label" v-text="label"></span>
           </div>
         </slot>
       </div>

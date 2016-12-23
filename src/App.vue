@@ -1,21 +1,18 @@
 <template>
-  <core-layout></core-layout>
+  <router-view></router-view>
 </template>
 
 <script>
-  import CoreLayout from './layouts/CoreLayout'
-
   export default {
     name: 'app',
-    components: {
-      CoreLayout
-    }
+    components: {}
   }
 
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
   @import "assets/sass/util";
+  @import "assets/css/sprite.css";
 
   html {
     font-family: "Microsoft YaHei", serif;

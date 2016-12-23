@@ -37,6 +37,14 @@ const routers = [{
     })
   }
 }, {
+  path: '/setting',
+  name: 'index',
+  component (resolve) {
+    require.ensure(['./views/Setting/Index.vue'], () => {
+      resolve(require('./views/Setting/Index.vue'))
+    })
+  }
+}, {
   path: '*',
   component: SignUp
 }]

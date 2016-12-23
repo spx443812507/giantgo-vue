@@ -1,5 +1,5 @@
 <template>
-  <cell :title="label" v-bind="{ icon: icon }" :class="label ? 'go-field-hasLabel' : 'go-field'">
+  <cell :title="label" :icon="icon" :class="label ? 'go-field-hasLabel' : 'go-field'">
     <input
       ref="input"
       class="go-field-core"
