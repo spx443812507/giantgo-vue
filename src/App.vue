@@ -52,17 +52,17 @@
 
   h1 {
     @include font-dpr(16px);
-    margin: 0 0 pxToRem(12px);
+    @include rem(margin, 0 0 12px);
   }
 
   h2 {
     @include font-dpr(15px);
-    margin: pxToRem(7.5px) 0 pxToRem(15px);
+    @include rem(margin, 7.5px 15px);
   }
 
   p {
     @include font-dpr(16px);
-    margin: pxToRem(2px) 0;
+    @include rem(margin, 2px 0);
   }
 
   a {

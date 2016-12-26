@@ -33,13 +33,13 @@
     color: $checklist-title-color;
     display: block;
     @include font-dpr(16px);
-    margin: pxToRem(10px) pxToRem(16px);
+    @include rem(margin, 10px 16px);
   }
 
   .go-checklist-label {
     width: 100%;
     display: block;
-    padding: 0 pxToRem(10px);
+    @include rem(padding, 0 16px);
   }
 
   .go-checkbox-input {
@@ -68,7 +68,7 @@
     display: inline-block;
     background-color: $color-white;
     border-radius: 100%;
-    border: pxToRem(1px) solid #ccc;
+    @include rem(border, 1px solid #ccc);
     position: relative;
     vertical-align: middle;
     &::after {
@@ -76,7 +76,7 @@
       height: $checklist-size/2;
       top: $checklist-size/7;
       left: $checklist-size/3;
-      border: pxToRem(4px) solid transparent;
+      @include rem(border, 4px solid transparent);
       border-left: 0;
       border-top: 0;
       content: " ";
@@ -87,7 +87,7 @@
   }
 
   .go-checkbox-label {
-    @include px2rem('margin-left', 10px);
+    @include rem(margin-left, 10px);
   }
 </style>
 <script>

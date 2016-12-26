@@ -1,8 +1,17 @@
 @charset "utf-8";
-@import "util";
 
+/* Base font size */
+$base-font-size: 75px;
+$rem-fallback: false !default;
+$rem-px-only: false !default;
+
+/* Page max width */
+$page-max-width: $base-font-size * 10;
+
+/* Background image url */
 $background-image: '../../assets/images/background.png';
 
+/* Color variables */
 $color-blue: #26a2ff;
 $color-white: #fff;
 $color-grey: #696969;
@@ -15,7 +24,7 @@ $warning-color: #ffc107;
 $cell-value-color: #888;
 
 /* Header Component */
-$header-height: 40px;
+$header-height: 50px;
 
 /* Button Component */
 $button-default-color: #656b79;
@@ -41,7 +50,7 @@ $tabbar-tab-item-selected-background-color: #eaeaea;
 
 /* Checklist Component */
 $checklist-title-color: #888;
-$checklist-size: pxToRem(50px);
+$checklist-size: 50px;
 
 /* Radio Component */
 $radio-title-color: #888;
@@ -54,4 +63,6 @@ $z-index-normal: 1;
 // 精灵图片
 //$icon-sprite-base-class:".sprite-base" !default;
 $icon-sprite-dimensions: true; // 自动检测精灵图片宽高
+
+/* Mask component */
 $background-mask: rgba(255, 255, 255, .1);

@@ -1,47 +1,72 @@
 @charset "utf-8";
+@import "var";
 
-@function px2em($px, $base-font-size: 75px) {
-  @if (unitless($px)) {
-    @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
-    @return px2em($px + 0px); // That may fail.
-  } @else if (unit($px) == em) {
-    @return $px;
+@function rem-separator($list, $separator: false) {
+  @if $separator == "comma" or $separator == "space" {
+    @return append($list, null, $separator);
   }
-  @return ($px / $base-font-size) * 1em;
+
+  @if function-exists("list-separator") == true {
+    @return list-separator($list);
+  }
+
+  // list-separator polyfill by Hugo Giraudel (https://sass-compatibility.github.io/#list_separator_function)
+  $test-list: ();
+  @each $item in $list {
+    $test-list: append($test-list, $item, space);
+  }
+
+  @return if($test-list == $list, space, comma);
 }
 
-// 将 px 转化成 rem
-@function pxToRem($pxVal,$baseline-px:75) {
-  $pxVal: $pxVal / ($pxVal * 0 + 1); // 去单位
-  @if $pxVal == 0 {
-    @return 0;
+@mixin rem-baseline($zoom: 100%) {
+  font-size: $zoom / 16px * $base-font-size;
+}
+
+@function rem-convert($to, $values...) {
+  $result: ();
+  $separator: rem-separator($values);
+
+  @each $value in $values {
+    @if type-of($value) == "number" and unit($value) == "rem" and $to == "px" {
+      $result: append($result, $value / 1rem * $base-font-size + 0px, $separator);
+    } @else if type-of($value) == "number" and unit($value) == "px" and $to == "rem" {
+      $result: append($result, $value / $base-font-size + 0rem, $separator);
+    } @else if type-of($value) == "list" {
+      $value-separator: rem-separator($value);
+      $value: rem-convert($to, $value...);
+      $value: rem-separator($value, $value-separator);
+      $result: append($result, $value, $separator);
+    } @else {
+      $result: append($result, $value, $separator);
+    }
+  }
+
+  @return if(length($result) == 1, nth($result, 1), $result);
+}
+
+@function rem($values...) {
+  @if $rem-px-only {
+    @return rem-convert(px, $values...);
   } @else {
-    @return $pxVal/$baseline-px * 1rem;
+    @return rem-convert(rem, $values...);
   }
 }
 
-
-@mixin px2rem($property,$px-values,$baseline-px:75px,$support-for-ie:false) {
-  //Conver the baseline into rems
-  $baseline-rem: $baseline-px / 1rem * 1;
-  //Print the first line in pixel values
-  @if $support-for-ie {
-    #{$property}: $px-values;
-  }
-  //if there is only one (numeric) value, return the property/value line for it.
-  @if type-of($px-values) == "number" {
-    #{$property}: $px-values / $baseline-rem;
+@mixin rem($properties, $values...) {
+  @if type-of($properties) == "map" {
+    @each $property in map-keys($properties) {
+      @include rem($property, map-get($properties, $property));
+    }
   } @else {
-    //Create an empty list that we can dump values into
-    $rem-values: ();
-    @each $value in $px-values {
-      // If the value is zero or not a number, return it
-      @if $value == 0 or type-of($value) != "number" {
-        $rem-values: append($rem-values, $value / $baseline-rem);
+    @each $property in $properties {
+      @if $rem-fallback or $rem-px-only {
+        #{$property}: rem-convert(px, $values...);
+      }
+      @if not $rem-px-only {
+        #{$property}: rem-convert(rem, $values...);
       }
     }
-    // Return the property and its list of converted values
-    #{$property}: $rem-values;
   }
 }
 
@@ -56,4 +81,3 @@
     font-size: $font-size * 3;
   }
 }
-

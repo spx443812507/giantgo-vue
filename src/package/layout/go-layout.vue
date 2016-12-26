@@ -22,7 +22,7 @@
   .go-container {
     width: 100%;
     height: 100%;
-    @include px2rem(max-width, 750px);
+    @include rem(max-width, $page-max-width);
     box-sizing: border-box;
     background: url($background-image) no-repeat;
     margin: 0 auto;
@@ -31,11 +31,11 @@
     overflow: hidden;
   }
 
-  .bar {
+  .go-header {
     position: absolute;
     right: 0;
     left: 0;
-    @include px2rem(max-width, 750px);
+    @include rem(max-width, $page-max-width);
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -62,7 +62,7 @@
     overflow: auto;
     width: auto;
     height: auto;
-    @include px2rem(padding, 30px);
+    @include rem(padding, 30px);
     display: flex;
     display: -webkit-flex;
     flex-flow: column nowrap;
@@ -72,14 +72,14 @@
   }
 
   .form-group {
-    @include px2rem(margin-bottom, 20px);
+    @include rem(margin-bottom, 20px);
     border-bottom: solid 1px #645d5a;
   }
 
   .form-control {
     width: 90%;
-    @include px2rem(height, 100px);
-    @include px2rem(line-height, 100px);
+    @include rem(height, 100px);
+    @include rem(line-height, 100px);
     float: right;
     @include font-dpr(16px);
     border-radius: 0;
@@ -93,7 +93,7 @@
   }
 
   .control-icon {
-    @include px2rem(margin-top, 20px);
+    @include rem(margin-top, 20px);
   }
 
   .bar-header {
@@ -107,14 +107,14 @@
     border-top-width: 1px;
     border-bottom-width: 0;
     & > span {
-      padding: pxToRem(25px) 0;
+      @include rem(padding, 25px 0);
     }
   }
 
   .bar-header-tools {
     width: 100%;
-    @include px2rem(min-height, 120px);
-    @include px2rem(padding, 34px);
+    @include rem(min-height, 120px);
+    @include rem(padding, 34px);
     display: flex;
     flex-flow: row nowrap;
     vertical-align: middle;
@@ -125,9 +125,9 @@
 
   .bar-footer-tools {
     width: 100%;
-    @include px2rem(height, 120px);
-    margin: 0 pxToRem(25px);
-    padding: 0 pxToRem(15px);
+    @include rem(height, 120px);
+    @include rem(margin, 0 25px);
+    @include rem(padding, 0 15px);
     flex: 1;
     display: flex;
     flex-flow: row nowrap;
@@ -136,8 +136,8 @@
     text-align: center;
     vertical-align: middle;
     & > span {
-      @include px2rem(height, 100px);
-      @include px2rem(width, 100px);
+      @include rem(height, 100px);
+      @include rem(width, 100px);
       display: flex;
       flex-flow: column;
       justify-content: center;
@@ -149,88 +149,12 @@
     }
   }
 
-  .correct {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @include px2rem(width, 200px);
-    @include px2rem(height, 200px);
-    border-radius: 50%;
-    background-color: #ffffff;
-    .correct-logo {
-      @include px2rem(width, 145px);
-      @include px2rem(height, 112px);
-    }
-  }
-
-  .tab {
-    display: flex;
-    width: 100%;
-    @include font-dpr(16px);
-    @include px2rem(padding-top, 40px);
-    a {
-      color: #ffffff;
-      text-decoration: none;
-      width: 50%;
-      text-align: center;
-      box-sizing: content-box;
-      @include px2rem(height, 80px);
-      @include px2rem(line-height, 80px);
-      outline: none;
-      &.router-link-active {
-        border-bottom: solid pxToRem(10px) #8c88ff;
-      }
-    }
-  }
-
-  .image-list {
-    width: 100%;
-    height: 100%;
-    @include px2rem(min-height, 300px);
-    @include px2rem(margin-bottom, 20px);
-    display: flex;
-    flex: 1;
-    img {
-      width: 50%;
-    }
-    .description {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-    & > * {
-      flex: 1;
-    }
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  .btn-submit {
-    width: 100%;
-    background-color: #8c88ff;
-    @include px2rem(height, 100px);
-    @include px2rem(line-height, 100px);
-    @include font-dpr(16px);
-    outline: none;
-    text-align: center;
-  }
-
   .has-header {
-    @include px2rem(top, 120px);
-  }
-
-  .has-logo {
-    @include px2rem(top, 450px);
+    @include rem(top, 120px);
   }
 
   .has-footer {
-    @include px2rem(bottom, 150px);
-  }
-
-  .has-submit {
-    @include px2rem(bottom, 200px);
+    @include rem(bottom, 150px);
   }
 
   .mask {

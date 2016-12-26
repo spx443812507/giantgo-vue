@@ -45,20 +45,20 @@
       display: flex;
     }
     .go-cell-title {
-      @include px2rem(width, 200px);
+      @include rem(width, 200px);
       -webkit-box-flex: 0;
       -ms-flex: none;
       flex: none;
     }
     .go-cell-info {
-      @include px2rem(width, 150px);
+      @include rem(width, 150px);
     }
   }
 
   .go-field-core {
     width: 100%;
-    @include px2rem(height, 100px);
-    @include px2rem(line-height, 100px);
+    @include rem(height, 100px);
+    @include rem(line-height, 100px);
     @include font-dpr(16px);
     border-radius: 0;
     color: inherit;

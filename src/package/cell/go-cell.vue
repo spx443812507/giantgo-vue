@@ -32,7 +32,7 @@
 
   .go-cell {
     @include font-dpr(16px);
-    @include px2rem('min-height', 120px);
+    @include rem(min-height, 120px);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -60,7 +60,7 @@
 
   .go-cell-wrapper {
     background-image: linear-gradient(180deg, $color-grey, $color-grey 50%, transparent 50%);
-    background-size: 120% pxToRem(5px);
+    @include rem(background-size, 120% 5px);
     background-repeat: no-repeat;
     background-position: top left;
     background-origin: content-box;
@@ -71,7 +71,7 @@
     line-height: 1;
     min-height: inherit;
     overflow: hidden;
-    padding: 0 pxToRem(16px);
+    @include rem(padding, 0 16px);
     width: 100%;
   }
 
@@ -88,7 +88,7 @@
   }
 
   .go-cell-info {
-    @include px2rem(margin-left, 5px);
+    @include rem(margin-left, 5px);
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -101,7 +101,7 @@
   .go-cell-label {
     display: block;
     @include font-dpr(12px);
-    @include px2rem(margin-top, 6px);
+    @include rem(margin-top, 6px);
   }
 
   .go-cell-value {
