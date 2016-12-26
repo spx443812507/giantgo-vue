@@ -1,3 +1,2 @@
-import CoreLayout from './CoreLayout'
-
-export default CoreLayout
+import PassportLayout from './PassportLayout'
+export default PassportLayout

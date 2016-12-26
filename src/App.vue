@@ -69,4 +69,8 @@
     text-decoration: none;
     color: inherit;
   }
+
+  .mask {
+    background: $background-mask;
+  }
 </style>

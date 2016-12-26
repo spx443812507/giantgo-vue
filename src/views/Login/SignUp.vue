@@ -1,6 +1,6 @@
 <template>
-  <go-layout :header="false" :footer="false">
-    <div class="header mask">
+  <passport-layout>
+    <div slot="header" class="header">
       <div class="header-tool">
         <i class="icon icon-close header-tool-left"></i>
         <i class="icon icon-camera header-tool-right"></i>
@@ -21,11 +21,11 @@
       <go-input icon="birthday" label="生日" placeholder="请选择生日"></go-input>
       <go-input icon="birthday" label="生日" placeholder="请选择生日"></go-input>
     </div>
-    <div class="field-submit">
+    <div slot="footer" class="field-submit">
       <go-button size="large" type="primary">注册</go-button>
       <span><a>忘记密码？</a></span>
     </div>
-  </go-layout>
+  </passport-layout>
 </template>
 <style lang="scss" rel="stylesheet/scss">
   @import "../../assets/sass/var";
@@ -72,7 +72,6 @@
   }
 
   .field-submit {
-    position: absolute;
     @include rem(padding, 0 40px);
     bottom: 0;
     width: 100%;
@@ -86,6 +85,7 @@
   }
 </style>
 <script type="text/ecmascript-6">
+  import passportLayout from '../../layouts/PassportLayout'
   import loginTab from '../../components/LoginTab'
 
   export default{
@@ -96,7 +96,8 @@
       }
     },
     components: {
-      loginTab
+      loginTab,
+      passportLayout
     },
     methods: {}
   }

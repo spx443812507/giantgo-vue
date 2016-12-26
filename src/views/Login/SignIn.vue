@@ -1,9 +1,7 @@
 <template>
-  <go-layout :header="6" :footer="3">
+  <passport-layout>
     <div slot="header" class="header">
       <div class="header-tool">
-        <i class="icon icon-close header-tool-left"></i>
-        <i class="icon icon-camera header-tool-right"></i>
       </div>
       <div class="correct">
         <img class="correct-logo" src="/static/images/correct.png"/>
@@ -18,7 +16,7 @@
       <go-button size="large" type="primary">注册</go-button>
       <span><a>忘记密码？</a></span>
     </div>
-  </go-layout>
+  </passport-layout>
 </template>
 <style lang="scss" rel="stylesheet/scss">
   @import "../../assets/sass/var";
@@ -78,6 +76,7 @@
   }
 </style>
 <script type="text/ecmascript-6">
+  import passportLayout from '../../layouts/PassportLayout'
   import loginTab from '../../components/LoginTab'
 
   export default{
@@ -88,14 +87,10 @@
       }
     },
     components: {
-      loginTab
+      loginTab,
+      passportLayout
     },
-    methods: {
-      one () {
-        setTimeout(() => {
-        }, 100)
-      }
-    }
+    methods: {}
   }
 
 </script>

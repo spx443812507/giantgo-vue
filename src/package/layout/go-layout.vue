@@ -3,7 +3,7 @@
     <div class="go-header mask" v-if="header">
       <slot name="header"></slot>
     </div>
-    <div class="go-content" :class="class">
+    <div class="go-content" :class="{'has-header': header, 'has-footer': footer}">
       <slot></slot>
     </div>
     <div class="go-footer mask" v-if="footer">
@@ -72,10 +72,6 @@
   .has-footer {
     @include rem(bottom, 150px);
   }
-
-  .mask {
-    background: $background-mask;
-  }
 </style>
 <script>
   export default{
@@ -84,8 +80,14 @@
       return {}
     },
     props: {
-      class: Number,
-      footer: Number
+      header: {
+        type: Boolean,
+        default: false
+      },
+      footer: {
+        type: Boolean,
+        default: false
+      }
     },
     components: {}
   }
