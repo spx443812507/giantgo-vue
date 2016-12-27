@@ -16,10 +16,7 @@
   @import "../../assets/sass/util";
 
   %go-field {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    display: -webkit-flex;
     color: inherit;
   }
 
@@ -31,8 +28,6 @@
       display: flex;
     }
     .go-cell-title {
-      -webkit-box-flex: 0;
-      -ms-flex: none;
       flex: none;
     }
   }
@@ -46,8 +41,6 @@
     }
     .go-cell-title {
       @include rem(width, 200px);
-      -webkit-box-flex: 0;
-      -ms-flex: none;
       flex: none;
     }
     .go-cell-info {
@@ -63,7 +56,7 @@
     border-radius: 0;
     color: inherit;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-    -webkit-appearance: none;
+    appearance: none;
     outline: none;
     &:focus {
       box-shadow: none;

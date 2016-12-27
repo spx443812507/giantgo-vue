@@ -23,8 +23,6 @@
   @import "../../assets/sass/util";
 
   .go-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
     border-radius: 4px;
     border: 0;

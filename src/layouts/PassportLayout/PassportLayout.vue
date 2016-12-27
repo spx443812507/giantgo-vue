@@ -19,7 +19,6 @@
     width: 100%;
     height: 100%;
     @include rem(max-width, $page-max-width);
-    box-sizing: border-box;
     background: url($background-image) no-repeat;
     margin: 0 auto;
     background-size: cover;
@@ -37,10 +36,10 @@
     width: auto;
     height: auto;
     display: flex;
-    display: -webkit-flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
     -webkit-overflow-scrolling: touch;
+    user-select: none;
     @include font-dpr(16px);
   }
 
@@ -79,8 +78,7 @@
     data () {
       return {}
     },
-    props: {
-    },
+    props: {},
     components: {}
   }
 </script>

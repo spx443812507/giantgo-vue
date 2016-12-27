@@ -33,10 +33,7 @@
   .go-cell {
     @include font-dpr(16px);
     @include rem(min-height, 120px);
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    display: -webkit-flex;
     color: inherit;
     text-decoration: none;
     &:first-child {
@@ -50,11 +47,7 @@
   }
 
   .go-cell-value {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
   }
 
@@ -76,11 +69,7 @@
   }
 
   .go-cell-title {
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
     flex: 1;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -106,11 +95,7 @@
 
   .go-cell-value {
     color: #888;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
   }
 </style>

@@ -79,6 +79,10 @@ module.exports = {
         }
       },
       {
+        test: /\.css$/,
+        loader: "style-loader!css-loader!postcss-loader"
+      },
+      {
         test: /\.scss$/,
         loaders: ["style-loader", "css-loader", "sass-loader"]
       }
@@ -94,5 +98,8 @@ module.exports = {
         browsers: ['last 2 versions']
       })
     ]
+  },
+  postcss: function () {
+    return [require('autoprefixer')];
   }
 }
