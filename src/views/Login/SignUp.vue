@@ -11,18 +11,16 @@
       <login-tab></login-tab>
     </div>
     <div class="fields">
-      <go-input icon="profile" label="姓名" placeholder="请输入姓名"></go-input>
-      <go-input icon="email" label="邮箱" placeholder="请输入邮箱"></go-input>
-      <go-input icon="password" label="密码" placeholder="请输入密码"></go-input>
-      <go-input icon="birthday" label="生日" placeholder="请选择生日"></go-input>
-      <go-input icon="birthday" label="生日" placeholder="请选择生日"></go-input>
-      <go-input icon="birthday" label="生日" placeholder="请选择生日"></go-input>
-      <go-input icon="birthday" label="生日" placeholder="请选择生日"></go-input>
-      <go-input icon="birthday" label="生日" placeholder="请选择生日"></go-input>
-      <go-input icon="birthday" label="生日" placeholder="请选择生日"></go-input>
+      <go-input icon="profile" label="姓名" placeholder="请输入姓名" v-model="user.name"></go-input>
+      <go-input icon="email" label="邮箱" placeholder="请输入邮箱" v-model="user.email"></go-input>
+      <go-input icon="password" label="密码" placeholder="请输入密码" v-model="user.password"></go-input>
+      <go-input icon="birthday" label="生日" placeholder="请选择生日" v-model="user.birthday"></go-input>
+    </div>
+    <div class="fields">
+      <go-cell v-for="user in users" :key="user['.key']" title="姓名" :value="user.name"></go-cell>
     </div>
     <div slot="footer" class="field-submit">
-      <go-button size="large" type="primary">注册</go-button>
+      <go-button size="large" type="primary" @click="signUp">注册</go-button>
       <span><a>忘记密码？</a></span>
     </div>
   </passport-layout>
@@ -85,21 +83,56 @@
   }
 </style>
 <script type="text/ecmascript-6">
+  import wilddog from 'wilddog'
   import passportLayout from '../../layouts/PassportLayout'
   import loginTab from '../../components/LoginTab'
+
+  const userRef = wilddog.sync().ref('web/users')
 
   export default{
     data () {
       return {
-        msg: 'hello vue',
-        test: 'asd'
+        user: {
+          name: '',
+          email: '',
+          password: '',
+          birthday: ''
+        }
       }
+    },
+    wilddog: {
+      users: userRef
     },
     components: {
       loginTab,
       passportLayout
     },
-    methods: {}
+    methods: {
+      signUp () {
+        userRef.push({
+          name: this.user.name,
+          email: this.user.email,
+          password: this.user.password,
+          birthday: this.user.birthday
+        }).then(() => {
+          console.info('添加成功')
+        })
+
+        this.user.name = ''
+        this.user.email = ''
+        this.user.password = ''
+        this.user.birthday = ''
+      }
+    },
+    mounted () {
+      userRef.on('value', function (snapshot, error) {
+        if (error == null) {
+          console.log(123)
+        } else {
+          console.log(error)
+        }
+      })
+    }
   }
 
 </script>

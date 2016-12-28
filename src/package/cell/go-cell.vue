@@ -71,9 +71,7 @@
   .go-cell-title {
     flex: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
-
   }
 
   .go-cell-info {

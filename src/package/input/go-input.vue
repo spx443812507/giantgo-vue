@@ -69,13 +69,17 @@
   export default{
     name: 'go-input',
     data () {
-      return {}
+      return {
+        active: false,
+        currentValue: this.value
+      }
     },
     props: {
       label: String,
       icon: String,
       placeholder: String,
       disabled: Boolean,
+      readonly: Boolean,
       value: {}
     },
     components: {
@@ -91,8 +95,34 @@
       },
 
       handleClear () {
-        if (this.disabled || this.readonly) return
+        if (this.disabled || this.readonly) {
+          return
+        }
         this.currentValue = ''
+      }
+    },
+    watch: {
+      value (val) {
+        this.currentValue = val
+      },
+
+      currentValue (val) {
+        this.$emit('input', val)
+      },
+
+      attr: {
+        immediate: true,
+        handler (attrs) {
+          this.$nextTick(() => {
+            const target = [this.$refs.input, this.$refs.textarea]
+            target.forEach(el => {
+              if (!el || !attrs) {
+                return
+              }
+              Object.keys(attrs).map(name => el.setAttribute(name, attrs[name]))
+            })
+          })
+        }
       }
     }
   }
