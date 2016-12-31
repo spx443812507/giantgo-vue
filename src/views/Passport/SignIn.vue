@@ -2,8 +2,6 @@
   <passport-layout>
     <div slot="header" class="header">
       <div class="header-tool">
-        <i class="icon icon-close header-tool-left"></i>
-        <i class="icon icon-camera header-tool-right"></i>
       </div>
       <div class="correct">
         <img class="correct-logo" src="/static/images/correct.png"/>
@@ -11,16 +9,11 @@
       <login-tab></login-tab>
     </div>
     <div class="fields">
-      <go-input icon="profile" label="姓名" placeholder="请输入姓名" v-model="user.name"></go-input>
       <go-input icon="email" label="邮箱" placeholder="请输入邮箱" v-model="user.email"></go-input>
       <go-input icon="password" label="密码" placeholder="请输入密码" v-model="user.password"></go-input>
-      <go-input icon="birthday" label="生日" placeholder="请选择生日" v-model="user.birthday"></go-input>
-    </div>
-    <div class="fields">
-      <go-cell v-for="user in users" :key="user['.key']" title="姓名" :value="user.name"></go-cell>
     </div>
     <div slot="footer" class="field-submit">
-      <go-button size="large" type="primary" @click="signUp">注册</go-button>
+      <go-button size="large" type="primary" @click="signIn">注册</go-button>
       <span><a>忘记密码？</a></span>
     </div>
   </passport-layout>
@@ -87,52 +80,40 @@
   import passportLayout from '../../layouts/PassportLayout'
   import loginTab from '../../components/LoginTab'
 
-  const userRef = wilddog.sync().ref('web/users')
-
   export default{
     data () {
       return {
         user: {
-          name: '',
           email: '',
-          password: '',
-          birthday: ''
+          password: ''
         }
       }
-    },
-    wilddog: {
-      users: userRef
     },
     components: {
       loginTab,
       passportLayout
     },
     methods: {
-      signUp () {
-        userRef.push({
-          name: this.user.name,
-          email: this.user.email,
-          password: this.user.password,
-          birthday: this.user.birthday
-        }).then(() => {
-          console.info('添加成功')
+      signIn () {
+        wilddog.auth().signInWithEmailAndPassword(this.user.email, this.user.password).then((res) => {
+          this.redirectPage()
+        }).catch((error) => {
+          console.log(error)
         })
-
-        this.user.name = ''
-        this.user.email = ''
-        this.user.password = ''
-        this.user.birthday = ''
+      },
+      redirectPage () {
+        let redirectUrl = this.$route.query.redirect
+        if (redirectUrl) {
+          this.$router.push({path: redirectUrl})
+        } else {
+          this.$router.push({name: 'home'})
+        }
       }
     },
     mounted () {
-      userRef.on('value', function (snapshot, error) {
-        if (error == null) {
-          console.log(123)
-        } else {
-          console.log(error)
-        }
-      })
+      if (wilddog.auth().currentUser != null) {
+        this.redirectPage()
+      }
     }
   }
-
 </script>

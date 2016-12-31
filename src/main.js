@@ -22,6 +22,25 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach(function (to, from, next) {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (wilddog.auth().currentUser == null) {
+      next({
+        path: '/passport/signin',
+        query: {redirect: to.fullPath}
+      })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
+
+wilddog.auth().onAuthStateChanged((user) => {
+  console.log(wilddog.auth().currentUser)
+})
+
 new Vue(
   Vue.util.extend({
     router,

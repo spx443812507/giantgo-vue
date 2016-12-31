@@ -1,52 +1,41 @@
-// require.ensure 是 Webpack 的特殊语法，用来设置 code-split point
-
-// const Index = resolve => {
-//   require.ensure(['./views/Home/Index.vue'], () => {
-//     resolve(require('./views/Home/Index.vue'))
-//   })
-// }
-
-const SignUp = resolve => {
-  require.ensure(['./views/Login/SignUp.vue'], () => {
-    resolve(require('./views/Login/SignUp.vue'))
+const Home = resolve => {
+  require.ensure(['./views/Home/Index.vue'], () => {
+    resolve(require('./views/Home/Index.vue'))
   })
 }
 
 const routers = [{
+  path: '/home',
+  name: 'home',
+  component: Home
+}, {
   path: '/passport/signin',
   name: 'signin',
   component (resolve) {
-    require.ensure(['./views/Login/SignIn.vue'], () => {
-      resolve(require('./views/Login/SignIn.vue'))
+    require.ensure(['./views/Passport/SignIn.vue'], () => {
+      resolve(require('./views/Passport/SignIn.vue'))
     })
   }
 }, {
   path: '/passport/signup',
   name: 'signup',
   component (resolve) {
-    require.ensure(['./views/Login/SignUp.vue'], () => {
-      resolve(require('./views/Login/SignUp.vue'))
+    require.ensure(['./views/Passport/SignUp.vue'], () => {
+      resolve(require('./views/Passport/SignUp.vue'))
     })
   }
 }, {
-  path: '/home',
-  name: 'index',
-  component (resolve) {
-    require.ensure(['./views/Home/Index.vue'], () => {
-      resolve(require('./views/Home/Index.vue'))
-    })
-  }
-}, {
-  path: '/setting',
-  name: 'index',
+  path: '/setting/index',
+  name: 'setting',
   component (resolve) {
     require.ensure(['./views/Setting/Index.vue'], () => {
       resolve(require('./views/Setting/Index.vue'))
     })
-  }
+  },
+  meta: {requiresAuth: true}
 }, {
   path: '*',
-  component: SignUp
+  component: Home
 }]
 
 export default routers
