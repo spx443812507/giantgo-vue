@@ -6,14 +6,20 @@
         <i class="icon icon-search header-tool-right"></i>
       </div>
     </div>
-    <div class="image-list" v-for="(item, index) in images">
-      <div class="mask">
-        {{item.desc}}{{index}}
-      </div>
-      <div>
-        <img :alt="item.desc" :src="item.url"/>
-      </div>
-    </div>
+    <waterfall :line-gap="320" :min-line-gap="20" :watch="images">
+      <waterfall-slot
+        v-for="(item, index) in images"
+        :width="item.file.width"
+        :height="item.file.height"
+        :order="index">
+        <div class="image-list">
+          <img :alt="item.desc" :src="imagePrefix + item.file.key"/>
+          <div class="desc">
+{{item.user.username}}
+          </div>
+        </div>
+      </waterfall-slot>
+    </waterfall>
     <div slot="footer">
       <footer-nav></footer-nav>
     </div>
@@ -46,52 +52,46 @@
   }
 
   .image-list {
-    width: 100%;
-    @include rem(min-height, 300px);
-    @include rem(margin-bottom, 20px);
+    width: 95%;
     display: flex;
-    & > * {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      flex: 1;
-    }
-    &:first-child {
-      margin-top: 0;
-    }
-    &:last-child {
-      margin-bottom: 0;
-    }
-    &:nth-child(odd) {
-      flex-direction: row;
-    }
-    &:nth-child(even) {
-      flex-direction: row-reverse;
-    }
-    img {
-      width: 100%;
-      height: 100%;
-    }
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @include rem(box-shadow, 0 5px 6px rgba(0, 0, 0, .25));
+  }
+
+  .vue-waterfall-slot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
   }
 </style>
 <script type="text/ecmascript-6">
+  import wilddog from 'wilddog'
   import FooterNav from '../../components/FooterNav'
+  import Waterfall from 'vue-waterfall/lib/waterfall'
+  import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot'
+
+  const imagesRef = wilddog.sync().ref('web/images')
 
   export default{
     data () {
       return {
-        images: [
-          {url: '//img.hb.aicdn.com/005953e097e39e0e6b71ddb797b514e9c5faa1412295f-SdeMna_fw236', desc: '图片'},
-          {url: 'static/images/image-02.png', desc: '图片'},
-          {url: 'static/images/image-02.png', desc: '图片'},
-          {url: 'static/images/image-02.png', desc: '图片'},
-          {url: 'static/images/image-02.png', desc: '图片'}
-        ]
+        imagePrefix: '//hbimg.b0.upaiyun.com/'
       }
     },
+    wilddog: {
+      images: imagesRef
+    },
     components: {
-      FooterNav
+      FooterNav,
+      Waterfall,
+      WaterfallSlot
     },
     mounted () {
     }
