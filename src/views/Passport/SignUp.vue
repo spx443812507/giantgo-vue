@@ -15,6 +15,11 @@
       <go-input icon="email" label="邮箱" placeholder="请输入邮箱" v-model="user.email"></go-input>
       <go-input icon="password" label="密码" placeholder="请输入密码" v-model="user.password"></go-input>
       <go-input icon="birthday" label="生日" placeholder="请选择生日" v-model="user.birthday"></go-input>
+      <go-input icon="birthday" label="生日" placeholder="请选择生日" v-model="user.birthday"></go-input>
+      <go-input icon="birthday" label="生日" placeholder="请选择生日" v-model="user.birthday"></go-input>
+      <go-input icon="birthday" label="生日" placeholder="请选择生日" v-model="user.birthday"></go-input>
+      <go-input icon="birthday" label="生日" placeholder="请选择生日" v-model="user.birthday"></go-input>
+      <go-input icon="birthday" label="生日" placeholder="请选择生日" v-model="user.birthday"></go-input>
     </div>
     <div slot="footer" class="field-submit">
       <go-button size="large" type="primary" @click="signUp">注册</go-button>
