@@ -22,7 +22,7 @@
       @include rem(height, 80px);
       @include rem(line-height, 80px);
       outline: none;
-      &.router-link-active {
+      &.active {
         @include rem(border-bottom, solid 10px #8c88ff);
       }
     }

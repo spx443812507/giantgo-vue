@@ -34,6 +34,24 @@ const routers = [{
   },
   meta: {requiresAuth: true}
 }, {
+  path: '/setting/profile',
+  name: 'profile',
+  component (resolve) {
+    require.ensure(['./views/Setting/Profile.vue'], () => {
+      resolve(require('./views/Setting/Profile.vue'))
+    })
+  },
+  meta: {requiresAuth: true}
+}, {
+  path: '/questionnaire/index',
+  name: 'questionnaire',
+  component (resolve) {
+    require.ensure(['./views/Questionnaire/Index.vue'], () => {
+      resolve(require('./views/Questionnaire/Index.vue'))
+    })
+  },
+  meta: {requiresAuth: true}
+}, {
   path: '*',
   component: Home
 }]

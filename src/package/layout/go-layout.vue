@@ -41,6 +41,14 @@
     -webkit-overflow-scrolling: touch;
     user-select: none;
     @include font-dpr(16px);
+
+    &.has-header {
+      @include rem(top, 120px);
+    }
+
+    &.has-footer {
+      @include rem(bottom, 150px);
+    }
   }
 
   %go-bar {
@@ -62,14 +70,6 @@
     bottom: 0;
     border-bottom-width: 0;
     border-top-width: 1px;
-  }
-
-  .has-header {
-    @include rem(top, 120px);
-  }
-
-  .has-footer {
-    @include rem(bottom, 150px);
   }
 </style>
 <script>

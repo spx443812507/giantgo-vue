@@ -7,6 +7,8 @@ import go from './package'
 import wildvue from 'wildvue'
 import wilddog from 'wilddog'
 
+let authenticated = false
+
 wilddog.initializeApp({
   authDomain: 'giantgo.wilddog.com',
   syncURL: 'https://giantgo.wilddogio.com'
@@ -18,19 +20,20 @@ Vue.use(VueRouter)
 
 /* eslint-disable no-new */
 const router = new VueRouter({
-  mode: 'history',
-  routes
+  mode: 'hash',
+  routes,
+  linkActiveClass: 'active'
 })
 
 router.beforeEach(function (to, from, next) {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (wilddog.auth().currentUser == null) {
+    if (authenticated) {
+      next()
+    } else {
       next({
         path: '/passport/signin',
         query: {redirect: to.fullPath}
       })
-    } else {
-      next()
     }
   } else {
     next()
@@ -38,11 +41,14 @@ router.beforeEach(function (to, from, next) {
 })
 
 wilddog.auth().onAuthStateChanged((user) => {
-  console.log(wilddog.auth().currentUser)
+  authenticated = !!user
+  if (authenticated) {
+    store.dispatch('autoLogin', user)
+  }
+  console.log('登录状态：' + (authenticated ? '已登录' : '未登录'))
+  new Vue(
+    Vue.util.extend({
+      router,
+      store
+    }, App)).$mount('#app')
 })
-
-new Vue(
-  Vue.util.extend({
-    router,
-    store
-  }, App)).$mount('#app')

@@ -132,7 +132,7 @@
       justify-content: center;
       align-items: center;
     }
-    .router-link-active {
+    .active {
       background-color: #8c88ff;
       border-radius: 50%;
     }

@@ -76,7 +76,7 @@
   }
 </style>
 <script type="text/ecmascript-6">
-  import wilddog from 'wilddog'
+  import {mapGetters} from 'vuex'
   import passportLayout from '../../layouts/PassportLayout'
   import loginTab from '../../components/LoginTab'
 
@@ -89,15 +89,20 @@
         }
       }
     },
+    computed: {
+      ...mapGetters({
+        authenticated: 'authenticated'
+      })
+    },
     components: {
       loginTab,
       passportLayout
     },
     methods: {
       signIn () {
-        wilddog.auth().signInWithEmailAndPassword(this.user.email, this.user.password).then((res) => {
+        this.$store.dispatch('signIn', this.user).then(() => {
           this.redirectPage()
-        }).catch((error) => {
+        }, (error) => {
           console.log(error)
         })
       },
@@ -111,7 +116,7 @@
       }
     },
     mounted () {
-      if (wilddog.auth().currentUser != null) {
+      if (this.authenticated) {
         this.redirectPage()
       }
     }

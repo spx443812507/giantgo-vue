@@ -1,12 +1,12 @@
 <template>
-  <div class='go-container'>
-    <div class="go-header mask">
+  <div class='passport-container'>
+    <div class="passport-header mask">
       <slot name="header"></slot>
     </div>
-    <div class="go-content has-header has-footer">
+    <div class="passport-content has-header has-footer">
       <slot></slot>
     </div>
-    <div class="go-footer">
+    <div class="passport-footer">
       <slot name="footer"></slot>
     </div>
   </div>
@@ -15,7 +15,7 @@
   @import "../../assets/sass/var";
   @import "../../assets/sass/util";
 
-  .go-container {
+  .passport-container {
     width: 100%;
     height: 100%;
     @include rem(max-width, $page-max-width);
@@ -26,7 +26,7 @@
     overflow: hidden;
   }
 
-  .go-content {
+  .passport-content {
     position: absolute;
     top: 0;
     right: 0;
@@ -41,35 +41,34 @@
     -webkit-overflow-scrolling: touch;
     user-select: none;
     @include font-dpr(16px);
+    &.has-header {
+      @include rem(top, 450px);
+    }
+
+    &.has-footer {
+      @include rem(bottom, 200px);
+    }
   }
 
-  %go-bar {
+  %passport-bar {
     position: absolute;
     right: 0;
     left: 0;
     @include rem(max-width, $page-max-width);
   }
 
-  .go-header {
-    @extend %go-bar;
+  .passport-header {
+    @extend %passport-bar;
     top: 0;
     border-top-width: 0;
     border-bottom-width: 1px;
   }
 
-  .go-footer {
-    @extend %go-bar;
+  .passport-footer {
+    @extend %passport-bar;
     bottom: 0;
     border-bottom-width: 0;
     border-top-width: 1px;
-  }
-
-  .has-header {
-    @include rem(top, 450px);
-  }
-
-  .has-footer {
-    @include rem(bottom, 200px);
   }
 </style>
 <script>

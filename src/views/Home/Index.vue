@@ -6,7 +6,7 @@
         <i class="icon icon-search header-tool-right"></i>
       </div>
     </div>
-    <waterfall :line-gap="400" :min-line-gap="20" :watch="images">
+    <waterfall :line-gap="320" :min-line-gap="20" :watch="images">
       <waterfall-slot
         v-for="(item, index) in images"
         :width="item.file.width"
@@ -15,15 +15,13 @@
         <div class="image-list">
           <img :alt="item.desc" :src="imagePrefix + item.file.key + '.jpg'"/>
           <!--<div class="desc">-->
-            <!--<img :alt="item.user.username" :src="imagePrefix + item.user.avatar.key"/>-->
-            <!--<div class="text">{{item.user.username}}</div>-->
+          <!--<img :alt="item.user.username" :src="imagePrefix + item.user.avatar.key"/>-->
+          <!--<div class="text">{{item.user.username}}</div>-->
           <!--</div>-->
         </div>
       </waterfall-slot>
     </waterfall>
-    <div slot="footer">
-      <footer-nav></footer-nav>
-    </div>
+    <footer-nav slot="footer"></footer-nav>
   </go-layout>
 </template>
 <style lang="scss" rel="stylesheet/scss">
@@ -37,12 +35,6 @@
 
   .vue-waterfall {
     position: initial !important;
-  }
-
-  .vue-waterfall-slot {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
   }
 
   .header {
@@ -68,9 +60,13 @@
   }
 
   .image-list {
-    width: 95%;
+    position: absolute;
+    @include rem(top, 10px);
+    @include rem(right, 10px);
+    @include rem(bottom, 10px);
+    @include rem(left, 10px);
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     @include font-dpr(14px);
