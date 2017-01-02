@@ -6,7 +6,7 @@
         <i class="icon icon-search header-tool-right"></i>
       </div>
     </div>
-
+    <go-input icon="profile" label="姓名" placeholder="请输入姓名"></go-input>
     <div slot="footer">
       <footer-nav></footer-nav>
     </div>

@@ -8,6 +8,7 @@ import wildvue from 'wildvue'
 import wilddog from 'wilddog'
 
 let authenticated = false
+let app = null
 
 wilddog.initializeApp({
   authDomain: 'giantgo.wilddog.com',
@@ -46,9 +47,11 @@ wilddog.auth().onAuthStateChanged((user) => {
     store.dispatch('autoLogin', user)
   }
   console.log('登录状态：' + (authenticated ? '已登录' : '未登录'))
-  new Vue(
-    Vue.util.extend({
-      router,
-      store
-    }, App)).$mount('#app')
+  if (app === null) {
+    app = new Vue(
+      Vue.util.extend({
+        router,
+        store
+      }, App)).$mount('#app')
+  }
 })

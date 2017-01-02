@@ -76,6 +76,7 @@
   }
 
   win.addEventListener('resize', function () {
+    console.log(1)
     clearTimeout(tid);
     tid = setTimeout(refreshRem, 300);
   }, false);
@@ -94,9 +95,6 @@
     }, false);
   }
 
-
-  refreshRem();
-
   flexible.dpr = win.dpr = dpr;
   flexible.refreshRem = refreshRem;
   flexible.rem2px = function (d) {
@@ -113,5 +111,10 @@
     }
     return val;
   }
+
+  window.onload = function () {
+    refreshRem();
+    document.body.style.minHeight = flexible.px2rem(docEl.getBoundingClientRect().height) + "rem";
+  };
 
 })(window, window['lib'] || (window['lib'] = {}));

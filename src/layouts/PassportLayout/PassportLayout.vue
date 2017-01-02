@@ -44,7 +44,6 @@
     &.has-header {
       @include rem(top, 450px);
     }
-
     &.has-footer {
       @include rem(bottom, 200px);
     }
@@ -55,6 +54,8 @@
     right: 0;
     left: 0;
     @include rem(max-width, $page-max-width);
+    user-select: none;
+    transform: translate3d(0, 0, 0);
   }
 
   .passport-header {
