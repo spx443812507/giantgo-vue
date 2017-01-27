@@ -6,21 +6,7 @@
         <i class="icon icon-search header-tool-right"></i>
       </div>
     </div>
-    <waterfall :line-gap="320" :min-line-gap="20" :watch="images">
-      <waterfall-slot
-        v-for="(item, index) in images"
-        :width="item.file.width"
-        :height="Number(item.file.height)"
-        :order="index">
-        <div class="image-list">
-          <img :alt="item.desc" :src="imagePrefix + item.file.key + '.jpg'"/>
-          <!--<div class="desc">-->
-          <!--<img :alt="item.user.username" :src="imagePrefix + item.user.avatar.key"/>-->
-          <!--<div class="text">{{item.user.username}}</div>-->
-          <!--</div>-->
-        </div>
-      </waterfall-slot>
-    </waterfall>
+    <go-cell v-for="post in posts" :title="post.player"></go-cell>
     <footer-nav slot="footer"></footer-nav>
   </go-layout>
 </template>
@@ -94,28 +80,27 @@
   }
 </style>
 <script type="text/ecmascript-6">
-  import wilddog from 'wilddog'
   import FooterNav from '../../components/FooterNav'
-  import Waterfall from 'vue-waterfall/lib/waterfall'
-  import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot'
-
-  const imagesRef = wilddog.sync().ref('web/images')
 
   export default{
     data () {
       return {
-        imagePrefix: 'http://sino2016.top/images/'
+        imagePrefix: 'http://sino2016.top/images/',
+        posts: []
       }
     },
-    wilddog: {
-      images: imagesRef
-    },
     components: {
-      FooterNav,
-      Waterfall,
-      WaterfallSlot
+      FooterNav
     },
     mounted () {
+      this.$http.get('/api/classes/Post', {
+        headers: {
+          'X-Parse-Application-Id': 'myAppId'
+        }
+      }).then((data) => {
+        console.log(data.body.results)
+        this.posts = data.body.results
+      })
     }
   }
 </script>

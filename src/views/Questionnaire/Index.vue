@@ -17,19 +17,13 @@
   @import "../../assets/sass/util";
 </style>
 <script type="text/ecmascript-6">
-  import wilddog from 'wilddog'
   import FooterNav from '../../components/FooterNav'
-
-  const imagesRef = wilddog.sync().ref('web/images')
 
   export default{
     data () {
       return {
         imagePrefix: 'http://sino2016.top/images/'
       }
-    },
-    wilddog: {
-      images: imagesRef
     },
     components: {
       FooterNav
