@@ -93,11 +93,7 @@
       FooterNav
     },
     mounted () {
-      this.$http.get('/api/classes/Post', {
-        headers: {
-          'X-Parse-Application-Id': 'myAppId'
-        }
-      }).then((data) => {
+      this.$http.get('/api/classes/Post').then((data) => {
         console.log(data.body.results)
         this.posts = data.body.results
       })

@@ -12,11 +12,7 @@ const getters = {
 
 const actions = {
   signUp ({commit, state}, userInfo) {
-    Vue.http.post('/api/users', userInfo, {
-      headers: {
-        'X-Parse-Application-Id': 'myAppId'
-      }
-    })
+    Vue.http.post('/api/users', userInfo)
   },
   signIn ({commit, state}, userInfo) {
     return new Promise((resolve, reject) => {
