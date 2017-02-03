@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './routers'
 import VueResource from 'vue-resource'
+import VueCookie from 'vue-cookie'
 import store from './store'
 import App from './App'
 import go from './package'
@@ -11,6 +12,7 @@ let authenticated = false
 Vue.use(go)
 Vue.use(VueRouter)
 Vue.use(VueResource)
+Vue.use(VueCookie)
 
 /* eslint-disable no-new */
 const router = new VueRouter({
@@ -32,6 +34,16 @@ router.beforeEach(function (to, from, next) {
   } else {
     next()
   }
+})
+
+Vue.http.interceptors.push((request, next) => {
+  // modify request
+  request.headers.append('X-Parse-Application-Id', 'myAppId')
+  // continue to next interceptor
+  if (Vue.cookie.get('token')) {
+    request.headers.append('token', Vue.cookie.get('token'))
+  }
+  next()
 })
 
 new Vue(

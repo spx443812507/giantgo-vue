@@ -93,10 +93,12 @@
       FooterNav
     },
     mounted () {
-      this.$http.get('/api/classes/Post').then((data) => {
+      this.$http.get('/api/parse/classes/Post').then((data) => {
         console.log(data.body.results)
         this.posts = data.body.results
       })
+
+      this.$http.get('/api/passport')
     }
   }
 </script>
