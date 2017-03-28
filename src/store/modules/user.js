@@ -12,12 +12,10 @@ const getters = {
 
 const actions = {
   signUp ({commit, state}, userInfo) {
-    return Vue.http.post('/api/passport', userInfo)
+    return Vue.http.post('/api/users', userInfo)
   },
   signIn ({commit, state}, userInfo) {
-    return new Promise((resolve, reject) => {
-
-    })
+    return Vue.http.get('/api/users', userInfo)
   },
   autoLogin ({commit, state}, userInfo) {
 
