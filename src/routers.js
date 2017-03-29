@@ -32,7 +32,7 @@ const routers = [{
       resolve(require('./views/Setting/Index.vue'))
     })
   },
-  meta: {requiresAuth: true}
+  meta: {authorization: true}
 }, {
   path: '/setting/profile',
   name: 'profile',
@@ -41,7 +41,7 @@ const routers = [{
       resolve(require('./views/Setting/Profile.vue'))
     })
   },
-  meta: {requiresAuth: true}
+  meta: {authorization: true}
 }, {
   path: '/questionnaire/index',
   name: 'questionnaire',
@@ -50,7 +50,25 @@ const routers = [{
       resolve(require('./views/Questionnaire/Index.vue'))
     })
   },
-  meta: {requiresAuth: true}
+  meta: {authorization: true}
+}, {
+  path: '/chat/index',
+  name: 'chat_index',
+  component (resolve) {
+    require.ensure(['./views/Chat/Index.vue'], () => {
+      resolve(require('./views/Chat/Index.vue'))
+    })
+  },
+  meta: {authorization: true}
+}, {
+  path: '/chat/create',
+  name: 'create_chat',
+  component (resolve) {
+    require.ensure(['./views/Chat/Create.vue'], () => {
+      resolve(require('./views/Chat/Create.vue'))
+    })
+  },
+  meta: {authorization: true}
 }, {
   path: '*',
   component: Home

@@ -13,7 +13,7 @@
       <go-input icon="password" label="密码" placeholder="请输入密码" v-model="user.password"></go-input>
     </div>
     <div slot="footer" class="field-submit">
-      <go-button size="large" type="primary" @click="signIn">注册</go-button>
+      <go-button size="large" type="primary" @click="signIn">登录</go-button>
       <span><a>忘记密码？</a></span>
     </div>
   </passport-layout>
@@ -84,14 +84,14 @@
     data () {
       return {
         user: {
-          email: '',
-          password: ''
+          email: 'spx@foxmail.com',
+          password: '123123'
         }
       }
     },
     computed: {
       ...mapGetters({
-        authenticated: 'authenticated'
+        token: 'token'
       })
     },
     components: {
@@ -100,7 +100,7 @@
     },
     methods: {
       signIn () {
-        this.$store.dispatch('signIn', this.user).then(() => {
+        this.$store.dispatch('signIn', this.user).then((result) => {
           this.redirectPage()
         }, (error) => {
           console.log(error)
@@ -116,7 +116,7 @@
       }
     },
     mounted () {
-      if (this.authenticated) {
+      if (this.token) {
         this.redirectPage()
       }
     }

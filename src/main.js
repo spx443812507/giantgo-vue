@@ -7,8 +7,6 @@ import store from './store'
 import App from './App'
 import go from './package'
 
-let authenticated = false
-
 Vue.use(go)
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -22,10 +20,12 @@ const router = new VueRouter({
 })
 
 router.beforeEach(function (to, from, next) {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (authenticated) {
+  if (to.matched.some(record => record.meta.authorization)) {
+    if (Vue.cookie.get('token')) {
       next()
     } else {
+      this.dispatch('clearUserInfo')
+
       next({
         path: '/passport/signin',
         query: {redirect: to.fullPath}
@@ -37,12 +37,11 @@ router.beforeEach(function (to, from, next) {
 })
 
 Vue.http.interceptors.push((request, next) => {
-  // modify request
-  request.headers.append('X-Parse-Application-Id', 'myAppId')
-  // continue to next interceptor
   if (Vue.cookie.get('token')) {
-    request.headers.append('token', Vue.cookie.get('token'))
+    request.headers.append('authorization', 'Bearer ' + Vue.cookie.get('token'))
   }
+
+  // continue to next interceptor
   next()
 })
 
