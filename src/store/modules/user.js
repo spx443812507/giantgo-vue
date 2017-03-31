@@ -15,7 +15,7 @@ const actions = {
     return Vue.http.post('/api/passports', userInfo)
   },
   signIn ({commit, state}, userInfo) {
-    return Vue.http.get('/api/passports', userInfo).then(response => {
+    return Vue.http.post('/api/passports', userInfo).then(response => {
       Vue.cookie.set('token', response['body']['token'])
       Vue.cookie.set('email', response['body']['data']['email'])
       Vue.cookie.set('avatar', response['body']['data']['avatar'])
