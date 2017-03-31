@@ -12,10 +12,10 @@ const getters = {
 
 const actions = {
   signUp ({commit, state}, userInfo) {
-    return Vue.http.post('/api/users', userInfo)
+    return Vue.http.post('/api/passports', userInfo)
   },
   signIn ({commit, state}, userInfo) {
-    return Vue.http.post('/api/auth/local', userInfo).then(response => {
+    return Vue.http.get('/api/passports', userInfo).then(response => {
       Vue.cookie.set('token', response['body']['token'])
       Vue.cookie.set('email', response['body']['data']['email'])
       Vue.cookie.set('avatar', response['body']['data']['avatar'])

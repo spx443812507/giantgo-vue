@@ -86,9 +86,9 @@
     data () {
       return {
         user: {
-          name: '',
-          email: '',
-          password: ''
+          name: 'siler',
+          email: 'spx@foxmail.com',
+          password: '123123'
         }
       }
     },

@@ -24,8 +24,6 @@ router.beforeEach(function (to, from, next) {
     if (Vue.cookie.get('token')) {
       next()
     } else {
-      this.dispatch('clearUserInfo')
-
       next({
         path: '/passport/signin',
         query: {redirect: to.fullPath}
