@@ -76,7 +76,6 @@
   }
 </style>
 <script type="text/ecmascript-6">
-  import {mapGetters} from 'vuex'
   import passportLayout from '../../layouts/PassportLayout'
   import loginTab from '../../components/LoginTab'
 
@@ -84,15 +83,10 @@
     data () {
       return {
         user: {
-          email: 'spx@foxmail.com',
+          email: 'spx123@foxmail.com',
           password: '123123'
         }
       }
-    },
-    computed: {
-      ...mapGetters({
-        token: 'token'
-      })
     },
     components: {
       loginTab,
@@ -101,6 +95,13 @@
     methods: {
       signIn () {
         this.$store.dispatch('signIn', this.user).then((result) => {
+          this.$store.commit('setUserInfo', {
+            email: this.user.email,
+            token: result['body']['token']
+          })
+
+          this.$cookie.set('token', result['body']['token'])
+
           this.redirectPage()
         }, (error) => {
           console.log(error)
@@ -113,11 +114,6 @@
         } else {
           this.$router.push({name: 'home'})
         }
-      }
-    },
-    mounted () {
-      if (this.token) {
-        this.redirectPage()
       }
     }
   }

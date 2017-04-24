@@ -58,7 +58,6 @@
     },
     computed: {
       ...mapGetters([
-        'authenticated',
         'userInfo'
       ])
     },
