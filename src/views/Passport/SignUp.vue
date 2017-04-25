@@ -11,10 +11,10 @@
       <login-tab></login-tab>
     </div>
     <div class="fields">
-      <go-input icon="profile" label="姓名" placeholder="请输入姓名" v-model="user.name"></go-input>
       <go-input icon="email" label="邮箱" placeholder="请输入邮箱" v-model="user.email"></go-input>
       <go-input icon="password" label="密码" placeholder="请输入密码" v-model="user.password"></go-input>
-      <go-input icon="mobile" label="手机" placeholder="请输入手机" v-model="user.mobile"></go-input>
+      <go-input icon="phone" label="手机" placeholder="请输入手机" v-model="user.mobile"></go-input>
+      <go-input icon="profile" label="姓名" placeholder="请输入姓名" v-model="user.name"></go-input>
     </div>
     <div slot="footer" class="field-submit">
       <go-button size="large" type="primary" @click="signUp">注册</go-button>

@@ -12,19 +12,49 @@ const getters = {
 
 const actions = {
   signUp ({commit, state}, userInfo) {
-    return Vue.http.post('/api/passports', userInfo)
+    return new Promise((resolve, reject) => {
+      Vue.http.post('/api/passports', userInfo).then((result) => {
+        let token = result['body']['token']
+        commit('setUserInfo', {
+          email: userInfo['email'],
+          token: token
+        })
+        Vue.cookie.set('token', token)
+        resolve(result)
+      }, (result) => {
+        reject(result)
+      })
+    })
   },
   signIn ({commit, state}, userInfo) {
-    return Vue.http.patch('/api/passports', userInfo)
+    return new Promise((resolve, reject) => {
+      Vue.http.patch('/api/passports', userInfo).then((result) => {
+        let token = result['body']['token']
+        commit('setUserInfo', {
+          email: userInfo['email'],
+          token: token
+        })
+        Vue.cookie.set('token', token)
+        resolve(result)
+      }, (result) => {
+        reject(result)
+      })
+    })
   },
-  clearUserInfo () {
+  getMyInfo ({commit, state}) {
+    return Vue.http.get('/api/users/me')
+  },
+  clearUserInfo ({commit, state}) {
+    commit('clearUserInfo')
     Vue.cookie.delete('token')
   }
 }
 
 const mutations = {
   setUserInfo (state, userInfo) {
-    state.userInfo = userInfo['data']
+    state.userInfo = {
+      email: userInfo['email']
+    }
     state.token = userInfo['token']
   },
   clearUserInfo () {

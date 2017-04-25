@@ -94,14 +94,7 @@
     },
     methods: {
       signIn () {
-        this.$store.dispatch('signIn', this.user).then((result) => {
-          this.$store.commit('setUserInfo', {
-            email: this.user.email,
-            token: result['body']['token']
-          })
-
-          this.$cookie.set('token', result['body']['token'])
-
+        this.$store.dispatch('signIn', this.user).then(() => {
           this.redirectPage()
         }, (error) => {
           console.log(error)

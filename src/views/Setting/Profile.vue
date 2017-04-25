@@ -9,8 +9,12 @@
     <div class="fields">
       <go-cell icon="profile" title="姓名" :value="userInfo.name"></go-cell>
       <go-cell icon="email" title="邮箱" :value="userInfo.email"></go-cell>
-      <go-cell icon="profile" title="邮箱认证" :value="userInfo.emailVerified ? '已认证' : '未认证'"></go-cell>
-      <go-cell icon="profile" title="手机认证" :value="userInfo.phoneVerified ? '已认证' : '未认证'"></go-cell>
+      <go-cell icon="phone" title="手机" :value="userInfo.mobile"></go-cell>
+      <go-cell :icon="userInfo.verified_email ? 'check' : 'close'" title="邮箱认证"
+               :value="userInfo.verifiedEmail"></go-cell>
+      <go-cell :icon="userInfo.verified_mobile ? 'check' : 'close'" title="手机认证"
+               :value="userInfo.verifiedMobile"></go-cell>
+      <go-cell icon="time" title="最后登录时间" :value="userInfo.lastLogin"></go-cell>
     </div>
     <div slot="footer">
       <footer-nav></footer-nav>
@@ -49,22 +53,29 @@
 
 </style>
 <script type="text/ecmascript-6">
-  import {mapGetters} from 'vuex'
+  import moment from 'moment'
   import FooterNav from '../../components/FooterNav'
 
   export default{
     data () {
-      return {}
-    },
-    computed: {
-      ...mapGetters([
-        'userInfo'
-      ])
+      return {
+        userInfo: {}
+      }
     },
     components: {
       FooterNav
     },
     mounted () {
+      this.$store.dispatch('getMyInfo', this.user).then((data) => {
+        let user = data['body']
+
+        this.userInfo = user
+        this.userInfo.lastLogin = moment(user['last_login']).format('YYYY-MM-DD HH:mm')
+        this.userInfo.verifiedEmail = user['verified_email'] ? '已认证' : '未认证'
+        this.userInfo.verifiedMobile = user['verified_mobile'] ? '已认证' : '未认证'
+      }, (error) => {
+        console.log(error)
+      })
     }
   }
 </script>

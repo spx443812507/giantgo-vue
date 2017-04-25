@@ -93,9 +93,6 @@
       FooterNav
     },
     mounted () {
-      this.$http.get('/api/messages').then(response => {
-        this.messages = response.body.data
-      })
     }
   }
 </script>
